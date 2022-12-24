@@ -1,4 +1,4 @@
-package br.com.banco.entities;
+package br.com.banco.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import br.com.banco.helpers.TipoOperacao;
 public class Transferencia {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  private Long id;
 
   @Column(nullable = false)
   private String data_transferencia; 
@@ -33,11 +33,11 @@ public class Transferencia {
   @Column(nullable = false)
   private long conta_id;
 
-  public long getId() {
+  public Long getId() {
     return this.id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

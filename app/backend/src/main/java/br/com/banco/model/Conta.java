@@ -1,4 +1,4 @@
-package br.com.banco.entities;
+package br.com.banco.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,17 +12,17 @@ public class Conta {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @OneToMany(mappedBy = "conta")
-  private long id_conta;
+  private Long id_conta;
 
 
   @Column(nullable = false)
   private String nome_responsavel;
 
-  public long getId_conta() {
+  public Long getId_conta() {
     return id_conta;
   }
 
-  public void setId_conta(long id_conta) {
+  public void setId_conta(Long id_conta) {
     this.id_conta = id_conta;
   }
 
