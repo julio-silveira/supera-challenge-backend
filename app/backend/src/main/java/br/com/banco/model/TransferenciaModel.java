@@ -1,5 +1,7 @@
 package br.com.banco.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,16 +10,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import br.com.banco.helpers.TipoOperacao;
 
-@Entity
-public class Transferencia {
+@Entity(name = "transferencias")
+public class TransferenciaModel {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @DateTimeFormat
+  @CreationTimestamp
   @Column(nullable = false)
-  private String data_transferencia; 
+  private LocalDateTime data_transferencia; 
 
   @Column(nullable = false)
   private float valor;
@@ -25,13 +32,12 @@ public class Transferencia {
   @Column(nullable = false)
   private TipoOperacao tipo; 
 
-  @Column(nullable = false)
-  private String nome_operador;
+  @Column
+  private String nome_operador_transacao;
 
   @ManyToOne
-  @JoinColumn(name= "conta_id")
-  @Column(nullable = false)
-  private long conta_id;
+  @JoinColumn(name= "conta_id", nullable = false)
+  private ContaModel conta;
 
   public Long getId() {
     return this.id;
@@ -41,11 +47,11 @@ public class Transferencia {
     this.id = id;
   }
 
-  public String getData_transferencia() {
+  public LocalDateTime getData_transferencia() {
     return this.data_transferencia;
   }
 
-  public void setData_transferencia(String data_transferencia) {
+  public void setData_transferencia(LocalDateTime data_transferencia) {
     this.data_transferencia = data_transferencia;
   }
 
@@ -65,20 +71,20 @@ public class Transferencia {
     this.tipo = tipo;
   }
 
-  public String getNome_operador() {
-    return this.nome_operador;
+  public String getNome_operador_transacao() {
+    return this.nome_operador_transacao;
   }
 
-  public void setNome_operador(String nome_operador) {
-    this.nome_operador = nome_operador;
+  public void setNome_operador_transacao(String nome_operador_transacao) {
+    this.nome_operador_transacao = nome_operador_transacao;
   }
 
-  public long getConta_id() {
-    return this.conta_id;
+  public ContaModel getConta() {
+    return this.conta;
   }
 
-  public void setConta_id(long conta_id) {
-    this.conta_id = conta_id;
+  public void setConta(ContaModel conta) {
+    this.conta = conta;
   }
 
 }
