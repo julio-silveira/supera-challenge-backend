@@ -26,7 +26,7 @@ public class TransferenciaModel {
   @DateTimeFormat
   @CreationTimestamp
   @Column(nullable = false)
-  private LocalDateTime data_transferencia; 
+  private LocalDateTime data; 
 
   @Column(nullable = false)
   private float valor;
@@ -36,7 +36,7 @@ public class TransferenciaModel {
   private TipoOperacao tipo; 
 
   @Column
-  private String nome_operador_transacao;
+  private String nome;
 
   @ManyToOne
   @JoinColumn(name= "conta_id", nullable = false)
@@ -50,12 +50,12 @@ public class TransferenciaModel {
     this.id = id;
   }
 
-  public LocalDateTime getData_transferencia() {
-    return this.data_transferencia;
+  public LocalDateTime getData() {
+    return this.data;
   }
 
-  public void setData_transferencia(LocalDateTime data_transferencia) {
-    this.data_transferencia = data_transferencia;
+  public void setData(LocalDateTime data_transferencia) {
+    this.data = data_transferencia;
   }
 
   public float getValor() {
@@ -74,12 +74,12 @@ public class TransferenciaModel {
     this.tipo = tipo;
   }
 
-  public String getNome_operador_transacao() {
-    return this.nome_operador_transacao;
+  public String getNome() {
+    return this.nome;
   }
 
-  public void setNome_operador_transacao(String nome_operador_transacao) {
-    this.nome_operador_transacao = nome_operador_transacao;
+  public void setNome(String nome_operador_transacao) {
+    this.nome = nome_operador_transacao;
   }
 
   public ContaModel getConta() {

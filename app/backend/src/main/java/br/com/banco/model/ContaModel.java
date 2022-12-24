@@ -17,8 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ContaModel {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  // @OneToMany(mappedBy = "conta")
-  private Long id_conta;
+  private Long id;
 
 
   @Column(nullable = false)
@@ -28,12 +27,12 @@ public class ContaModel {
   @OneToMany(mappedBy = "conta")
   private List<TransferenciaModel> transferencias = new ArrayList<>();
 
-  public Long getId_conta() {
-    return id_conta;
+  public Long getId() {
+    return id;
   }
 
-  public void setId_conta(Long id_conta) {
-    this.id_conta = id_conta;
+  public void setId(Long id_conta) {
+    this.id = id_conta;
   }
 
   public String getNome_responsavel() {

@@ -1,5 +1,8 @@
 package br.com.banco.controllers;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -25,11 +28,14 @@ public class TransferenciaController {
 
   @GetMapping
   public ResponseEntity<List<TransferenciaModel>> getAllTransactions(@PathVariable Long id,
-    @RequestParam String name,
-    @RequestParam String startingDate,
-    @RequestParam String endingDate){
-      System.out.println(startingDate + " " + endingDate +" "+ name);
+    @RequestParam(required = false) String name,
+    @RequestParam(required = false, defaultValue = "1700-01-01T00:00:00") String startingDate,
+    @RequestParam(required = false, defaultValue = "3000-01-01T00:00:00") String endingDate){
 
-    return ResponseEntity.status(HttpStatus.OK).body(transferenciaService.findAll());
+     
+    LocalDateTime sDate = LocalDateTime.parse(startingDate);
+    LocalDateTime eDate = LocalDateTime.parse(endingDate);
+
+      return ResponseEntity.status(HttpStatus.OK).body(transferenciaService.find(id, name, sDate, eDate));
   }
 }
