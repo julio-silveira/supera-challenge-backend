@@ -1,25 +1,20 @@
 package br.com.banco.controllers;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.List;
 
-import javax.validation.Valid;
-
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.banco.dtos.TransferenciaDto;
 import br.com.banco.model.TransferenciaModel;
 import br.com.banco.services.TransferenciaService;
 
 @RestController
-@RequestMapping("/transacoes")
+@RequestMapping("/transacoes/{id}")
 public class TransferenciaController {
 
   final TransferenciaService transferenciaService;
@@ -28,11 +23,13 @@ public class TransferenciaController {
     this.transferenciaService = transferenciaService;
   }
 
-  @PostMapping
-  public ResponseEntity<Object> saveTransaction(@RequestBody @Valid TransferenciaDto transferenciaDto ) {
-      var transferenciaModel = new TransferenciaModel();
-      BeanUtils.copyProperties(transferenciaDto, transferenciaModel);
-      transferenciaModel.setData_transferencia(LocalDateTime.now(ZoneId.of("UTC-3")));
-      return ResponseEntity.status(HttpStatus.CREATED).body(transferenciaService.save(transferenciaModel));
-  } 
+  @GetMapping
+  public ResponseEntity<List<TransferenciaModel>> getAllTransactions(@PathVariable Long id,
+    @RequestParam String name,
+    @RequestParam String startingDate,
+    @RequestParam String endingDate){
+      System.out.println(startingDate + " " + endingDate +" "+ name);
+
+    return ResponseEntity.status(HttpStatus.OK).body(transferenciaService.findAll());
+  }
 }

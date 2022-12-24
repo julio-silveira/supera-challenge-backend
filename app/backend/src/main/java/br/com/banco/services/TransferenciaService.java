@@ -1,6 +1,6 @@
 package br.com.banco.services;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ public class TransferenciaService {
     this.transferenciaRepository = transferenciaRepository;
   }
 
-  @Transactional
-  public TransferenciaModel save(TransferenciaModel transferenciaModel){
-    return transferenciaRepository.save(transferenciaModel);
-  } 
+  public List<TransferenciaModel> findAll(){
+    return transferenciaRepository.findAll();
+  
+  }
 }
