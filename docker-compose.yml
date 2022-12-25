@@ -1,6 +1,16 @@
 version: "3.8"
 name: supera-challenge
 services:
+  backend:
+    container_name: backend
+    depends_on:
+      - db
+    build: ./app
+    command: ["mvn","spring-boot:run"]
+    ports: 
+      - 8080:8080
+    stdin_open: true
+    tty: true
   db:
     container_name: db
     image: mysql:5.7
