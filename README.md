@@ -13,19 +13,19 @@
 
 ### Utilizando Docker(Sugerido)
 
-3a. Execute o comando `docker-compose up` e aguarde a instalação de dependências e configuração da aplicação/banco de dados(Esse processo leva em média 3 minutos para finalizar);
+3A. Execute o comando `docker-compose up` e aguarde a instalação de dependências e configuração da aplicação/banco de dados(Esse processo leva em média 3 minutos para finalizar);
 
-4a. Se não ocorrer nenhum erro durante a execução do docker compose, baixe o frontend da aplicação seguindo o passo a passo que se encontra no repositório. https://github.com/julio-silveira/supera-challenge-frontend
+4A. Se não ocorrer nenhum erro durante a execução do docker compose, baixe o frontend da aplicação seguindo o passo a passo que se encontra no repositório. https://github.com/julio-silveira/supera-challenge-frontend
 
 ### Sem Docker
    
- 3b. Crie um banco de dados mysql com nome de "banco" na sua máquina; 
+ 3B. Crie um banco de dados mysql com nome de "banco" na sua máquina; 
  
- 4b. Acesse o arquivo application.properties que se encontra no caminho /app/src/main/resources e altere as 3 primeiras linhas com as informações do seu banco de dados criado anteriormente;
+ 4B. Acesse o arquivo application.properties que se encontra no caminho /app/src/main/resources e altere as 3 primeiras linhas com as informações do seu banco de dados criado anteriormente;
  
- 5b. Volte para o diretório /app e execute o comando `mvn clean install` e em seguida `mvn spring-boot:run`
+ 5B. Volte para o diretório /app e execute o comando `mvn clean install` e em seguida `mvn spring-boot:run`
   
- 6b. Se não ocorrer nenhum erro durante a execução dos comandos, baixe o frontend da aplicação seguindo o passo a passo que se encontra no repositório. https://github.com/julio-silveira/supera-challenge-frontend 
+ 6B. Se não ocorrer nenhum erro durante a execução dos comandos, baixe o frontend da aplicação seguindo o passo a passo que se encontra no repositório. https://github.com/julio-silveira/supera-challenge-frontend 
 
 ## Requisitos do Projeto
 
