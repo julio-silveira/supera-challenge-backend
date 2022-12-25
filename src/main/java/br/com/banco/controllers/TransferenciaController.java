@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class TransferenciaController {
   }
 
   @GetMapping
+  @CrossOrigin
   public ResponseEntity<List<TransferenciaModel>> getAllTransactions(@PathVariable Long id,
     @RequestParam(required = false) String name,
     @RequestParam(required = false, defaultValue = "1700-01-01T00:00:00") String startingDate,
